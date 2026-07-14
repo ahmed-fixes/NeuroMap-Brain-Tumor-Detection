@@ -126,9 +126,9 @@ pip install -r requirements.txt
 
 
 
-`best_model.keras` isn't included in this repo (over GitHub's 100MB file
+`best_model.keras` isn't included in this repo (over GitHub's 100MB file limit).
 
-limit). Download it from **https://colab.research.google.com/drive/1UnmS1kCR0B29uACU3MyHxgrkPJgDUspN** and place it at:
+ Download it from **https://colab.research.google.com/drive/1UnmS1kCR0B29uACU3MyHxgrkPJgDUspN** and place it at:
 
 
 

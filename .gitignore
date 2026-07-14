@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual Environment
+venv/
+env/
+
+# IDEs
+.vscode/
+.idea/
+
+# Uploaded MRI Images
+static/uploads/*
+
+# Trained Model
+best_model.keras
+
+# OS Files
+.DS_Store
+Thumbs.db

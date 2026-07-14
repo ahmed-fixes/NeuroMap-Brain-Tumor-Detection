@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeuroMap — Brain Tumor MRI Classification</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a href="/" class="brand">
+    <span class="brand-mark"></span>
+    <span class="brand-name">NeuroMap</span>
+  </a>
+</header>
+
+<main class="landing">
+
+  <section class="hero">
+    <div class="hero-badges">
+      <span class="badge">Deep Learning</span>
+      <span class="badge">4-Class Classification</span>
+      <span class="badge">Grad-CAM Explainability</span>
+    </div>
+    <h1>Brain Tumor MRI Classification</h1>
+    <p class="hero-text">
+      NeuroMap analyzes brain MRI scans with a convolutional neural network trained to
+      distinguish glioma, meningioma, and pituitary tumors from healthy scans.
+      Every prediction is paired with a Grad-CAM heatmap, highlighting exactly which
+      region of the scan drove the model's decision.
+    </p>
+    <a href="#scan" class="scroll-cue" aria-hidden="true">
+      <span></span> Scroll to begin
+    </a>
+  </section>
+
+  <section id="scan" class="section">
+    <p class="section-eyebrow">01 — Upload</p>
+    <div id="dropzone" class="dropzone">
+      <input type="file" id="fileInput" accept="image/*" hidden>
+      <div class="dropzone-inner">
+        <svg class="dz-icon" width="38" height="38" viewBox="0 0 40 40" fill="none">
+          <path d="M20 26V6M20 6L13 13M20 6L27 13" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M6 26V30C6 31.66 7.34 33 9 33H31C32.66 33 34 31.66 34 30V26" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+        <p class="dz-label">Drop an MRI scan here</p>
+        <p class="dz-sub">or click to browse — JPG / PNG</p>
+      </div>
+    </div>
+    <p id="statusMsg" class="status-msg"></p>
+  </section>
+
+  <section id="results" class="section results-section">
+    <p class="section-eyebrow">02 — Diagnostic Output</p>
+
+    <div class="scan-row">
+      <div class="scan-panel">
+        <p class="panel-tag">Uploaded scan</p>
+        <div class="img-frame">
+          <img id="originalImg" alt="Original MRI scan">
+          <div id="scanSweep" class="scan-sweep"></div>
+        </div>
+      </div>
+
+      <div class="scan-panel">
+        <p class="panel-tag">Grad-CAM</p>
+        <div class="img-frame">
+          <img id="gradcamImg" alt="">
+        </div>
+      </div>
+    </div>
+
+    <div class="readout">
+      <div class="readout-top">
+        <div class="ring-wrap">
+          <svg class="ring" viewBox="0 0 200 200">
+            <circle class="ring-track" cx="100" cy="100" r="88"></circle>
+            <circle id="ringFill" class="ring-fill" cx="100" cy="100" r="88"></circle>
+          </svg>
+          <div class="ring-center">
+            <span id="ringPct">0%</span>
+            <small>confidence</small>
+          </div>
+        </div>
+        <div class="readout-primary">
+          <span class="readout-label">Prediction</span>
+          <span id="predictionLabel" class="readout-value">—</span>
+        </div>
+      </div>
+    </div>
+
+    <button id="resetBtn" class="reset-btn">Scan another image</button>
+  </section>
+
+  <section id="pipeline" class="section pipeline-section pipeline-section--spaced">
+    <p class="section-eyebrow section-eyebrow--big">How it works</p>
+    <div class="pipeline">
+      <div class="pipeline-step">
+        <span class="pipeline-index">01</span>
+        <div><h3>Preprocess</h3><p>The scan is resized and normalized to match the CNN's training distribution.</p></div>
+      </div>
+      <div class="pipeline-step">
+        <span class="pipeline-index">02</span>
+        <div><h3>Classify</h3><p>A trained CNN outputs a probability across glioma, meningioma, pituitary, and no-tumor.</p></div>
+      </div>
+      <div class="pipeline-step">
+        <span class="pipeline-index">03</span>
+        <div><h3>Explain</h3><p>Grad-CAM traces gradients to the last conv layer to localize the decisive region.</p></div>
+      </div>
+      <div class="pipeline-step">
+        <span class="pipeline-index">04</span>
+        <div><h3>Report</h3><p>The heatmap and full confidence breakdown are shown side-by-side with the scan.</p></div>
+      </div>
+    </div>
+    <p class="disclaimer"><strong>Note:</strong> Research &amp; educational demo — not a diagnostic medical device.</p>
+  </section>
+
+</main>
+
+<script src="/static/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeuroMap — Scan Result</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a href="/" class="brand">
+    <span class="brand-mark"></span>
+    <span class="brand-name">NeuroMap</span>
+  </a>
+</header>
+
+<main>
+
+  <section class="scan-row">
+    <div class="scan-panel">
+      <p class="panel-tag">01 — Uploaded Scan</p>
+      <div class="img-frame">
+        <img id="originalImg" alt="Original MRI scan">
+      </div>
+    </div>
+
+    <div class="scan-panel">
+      <p class="panel-tag">02 — Grad-CAM</p>
+      <div class="img-frame">
+        <img id="gradcamImg" alt="Grad-CAM heatmap overlay">
+      </div>
+    </div>
+  </section>
+
+  <section class="readout">
+    <div class="readout-primary">
+      <span class="readout-label">Prediction</span>
+      <span id="predictionLabel" class="readout-value">—</span>
+    </div>
+    <div id="probBars" class="prob-bars"></div>
+  </section>
+
+  <a href="/" class="reset-btn">Scan another image</a>
+
+  <p id="statusMsg" class="status-msg"></p>
+
+</main>
+
+<script src="/static/js/results.js"></script>
+</body>
+</html>

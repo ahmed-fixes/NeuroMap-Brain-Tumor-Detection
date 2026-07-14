@@ -1,12 +1,12 @@
-\# NeuroMap — Brain Tumor MRI Classification with Grad-CAM
+# NeuroMap — Brain Tumor MRI Classification with Grad-CAM
 
 
 
 NeuroMap is a deep learning web app that classifies brain MRI scans into four
 
-categories — \*\*glioma\*\*, \*\*meningioma\*\*, \*\*pituitary tumor\*\*, or \*\*no tumor\*\* —
+categories — **glioma**, **meningioma**, **pituitary tumor**, or **no tumor** —
 
-and pairs every prediction with a \*\*Grad-CAM heatmap\*\*, so you can see exactly
+and pairs every prediction with a **Grad-CAM heatmap**, so you can see exactly
 
 which region of the scan drove the model's decision.
 
@@ -18,7 +18,7 @@ Upload a scan → the model classifies it → the heatmap shows you why.
 
 
 
-\## Why Grad-CAM
+## Why Grad-CAM
 
 
 
@@ -34,27 +34,27 @@ actually be visually verified against the scan.
 
 
 
-\## Model
+## Model
 
 
 
-\- Custom CNN with residual blocks, trained \*\*from scratch\*\* — no pretrained
+- Custom CNN with residual blocks, trained **from scratch** — no pretrained
 
-&#x20; weights, no transfer learning.
+  weights, no transfer learning.
 
-\- \*\*94% test accuracy\*\* on the \[Brain Tumor MRI Dataset](https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset)
+- **94% test accuracy** on the [Brain Tumor MRI Dataset](https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset)
 
-&#x20; by Masoud Nickparvar (Kaggle) — 7,000+ scans across 4 classes.
+  by Masoud Nickparvar (Kaggle) — 7,000+ scans across 4 classes.
 
-\- Weighted loss to handle class imbalance, label smoothing to reduce
+- Weighted loss to handle class imbalance, label smoothing to reduce
 
-&#x20; overconfidence, AdamW optimizer with L2 regularization.
+  overconfidence, AdamW optimizer with L2 regularization.
 
-\- Trained on Google Colab (T4 GPU). Training notebook: \[Colab link](https://colab.research.google.com/drive/1UnmS1kCR0B29uACU3MyHxgrkPJgDUspN)
+- Trained on Google Colab (T4 GPU). Training notebook: [Colab link](https://colab.research.google.com/drive/1UnmS1kCR0B29uACU3MyHxgrkPJgDUspN)
 
 
 
-\## Tech stack
+## Tech stack
 
 
 
@@ -62,7 +62,7 @@ Python · TensorFlow / Keras · OpenCV · Flask · NumPy · HTML / CSS / JS
 
 
 
-\## Project structure
+## Project structure
 
 
 
@@ -80,7 +80,7 @@ NeuroMap/
 
 ├── model/
 
-│   └── best\_model.keras   # not included in repo — see "Model weights" below
+│   └── best_model.keras   # not included in repo — see "Model weights" below
 
 ├── templates/
 
@@ -90,19 +90,19 @@ NeuroMap/
 
 └── static/
 
-&#x20;   ├── css/style.css
+    ├── css/style.css
 
-&#x20;   ├── js/app.js, results.js
+    ├── js/app.js, results.js
 
-&#x20;   ├── uploads/            # saved scans (runtime, gitignored)
+    ├── uploads/            # saved scans (runtime, gitignored)
 
-&#x20;   └── gradcam/            # generated heatmaps (runtime, gitignored)
+    └── gradcam/            # generated heatmaps (runtime, gitignored)
 
 ```
 
 
 
-\## Setup
+## Setup
 
 
 
@@ -122,27 +122,27 @@ pip install -r requirements.txt
 
 
 
-\### Model weights
+### Model weights
 
 
 
-`best\_model.keras` isn't included in this repo (over GitHub's 100MB file
+`best_model.keras` isn't included in this repo (over GitHub's 100MB file
 
-limit). Download it from \*\*\[link your hosted weights here — e.g. Hugging
+limit). Download it from **[link your hosted weights here — e.g. Hugging
 
-Face / Google Drive]\*\* and place it at:
+Face / Google Drive]** and place it at:
 
 
 
 ```
 
-model/best\_model.keras
+model/best_model.keras
 
 ```
 
 
 
-\### Run
+### Run
 
 
 
@@ -158,7 +158,7 @@ Open `http://127.0.0.1:5000`
 
 
 
-\## API
+## API
 
 
 
@@ -168,7 +168,7 @@ POST /predict
 
 Form Data:
 
-&#x20;   image: MRI scan file (JPG/PNG)
+    image: MRI scan file (JPG/PNG)
 
 
 
@@ -176,13 +176,13 @@ Response:
 
 {
 
-&#x20; "prediction": "pituitary",
+  "prediction": "pituitary",
 
-&#x20; "confidence": 91.7,
+  "confidence": 91.7,
 
-&#x20; "probabilities": { "pituitary": 91.7, "glioma": 3.23, "notumor": 2.86, "meningioma": 2.22 },
+  "probabilities": { "pituitary": 91.7, "glioma": 3.23, "notumor": 2.86, "meningioma": 2.22 },
 
-&#x20; "gradcam": "static/gradcam/gradcam\_xxxx.jpg"
+  "gradcam": "static/gradcam/gradcam_xxxx.jpg"
 
 }
 
@@ -190,17 +190,17 @@ Response:
 
 
 
-\## Disclaimer
+## Disclaimer
 
 
 
-This is a research and educational project. It is \*\*not\*\* a diagnostic
+This is a research and educational project. It is **not** a diagnostic
 
 medical device and should never replace clinical judgment.
 
 
 
-\## License
+## License
 
 
 
